@@ -36,7 +36,7 @@ body {
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 400px;
+  width: 500px;
 }
 
 #add-book h3{
@@ -62,13 +62,10 @@ body {
 
 #add-book button{
   color: #fff;
-  font-size: 3em;
   background: #AD1457;
-  border: 0;
-  padding: 0px 15px;
-  border-radius: 50%;
   cursor: pointer;
-  float: left;
+  margin-left: 40px;
+  margin-top: 40px;
 }
 
 #add-book button:hover{

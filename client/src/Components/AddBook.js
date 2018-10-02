@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Form, Input } from 'semantic-ui-react';
+import { Grid, Form, Input, Button } from 'semantic-ui-react';
 
 import { getAuthorsQuery, addBookMutation, addAuthorMutation, getBooksQuery } from '../queries/queries';
 
@@ -21,17 +21,6 @@ class AddBook extends Component {
         console.log(this.state);
     }
 
-    // displayAuthors(){
-    //     let data = this.props.getAuthorsQuery;
-    //     if(data.loading){
-    //         return <option disabled>Authors Loading...</option>
-    //     } else {
-    //         return data.authors.map(author => {
-    //             return <option value={author.id} key={author.id}>{author.name}</option>;
-    //         })
-    //     }
-    // }
-
     displayAuthors(){
         let authorData = this.props.getAuthorsQuery;
         if(authorData.loading){
@@ -45,19 +34,17 @@ class AddBook extends Component {
 
     checkExistingAuthor(){
         let data = this.props.getAuthorsQuery;
-        console.log(data.authors);
         return data.authors.filter(author => author.name === this.state.authorName);
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        
-        console.log(this.checkExistingAuthor()[0]);
 
+        // runs a check to see if the Author's name is already in the database and stores the result in authorMatch.
         let authorMatch = this.checkExistingAuthor()[0];
-
+        
+        // if there is a match, create a new book. If not, then a new author will have to be created before the book can be created.
         if (authorMatch){
-            console.log(authorMatch.id)
             this.props.addBookMutation({
                 variables: {
                     name: this.state.name,
@@ -68,10 +55,13 @@ class AddBook extends Component {
             });
         } else {
             
+            // First, I create the new author in the database, then after the new entry is created, the update method
+            // is run afterwards- providing the data we just stored.
+
             this.props.addAuthorMutation({
                 variables: {
                     name: this.state.authorName,
-                    age: 44
+                    age: 0
                 },
                 update: (store, { data: author }) => {
                     
@@ -100,35 +90,41 @@ class AddBook extends Component {
 
             <div id="add-book">
 
-                <h3>Add New Book:</h3>
+                <Grid columns={2}>
+                    <Grid.Row>
+                        <Grid.Column width={10}>
 
-                <Form.Field inline>
-                    <label>Book name: </label>
-                    <Input name="name" onChange={this.handleInputChange} type="text"/>
-                </Form.Field>
+                            <h3>Add New Book:</h3>
 
-                <Form.Field inline>
-                    <label>Genre: </label>
-                    <Input name="genre" onChange={this.handleInputChange} type="text"/>
-                </Form.Field>
+                            <Form.Field inline>
+                                <label>Book name: </label>
+                                <Input name="name" onChange={this.handleInputChange} type="text"/>
+                            </Form.Field>
 
-                {/* <Form.Field inline>
-                    <label>Author:</label>
-                    <select name="authorId" onChange={this.handleInputChange}>
-                        <option>select author</option>
-                        {this.displayAuthors()}
-                    </select>
-                </Form.Field> */}
+                            <Form.Field inline>
+                                <label>Genre: </label>
+                                <Input name="genre" onChange={this.handleInputChange} type="text"/>
+                            </Form.Field>
 
-                <Form.Field>
-                <label>Author: </label>
-                <Input name="authorName" onChange={this.handleInputChange} list="authors"/>
-                    <datalist id="authors">
-                        {this.displayAuthors()}
-                    </datalist>
-                </Form.Field>
+                            <Form.Field>
+                            <label>Author: </label>
+                            <Input name="authorName" onChange={this.handleInputChange} list="authors"/>
+                                <datalist id="authors">
+                                    {this.displayAuthors()}
+                                </datalist>
+                            </Form.Field>
 
-                <button type="submit" onClick={this.handleSubmit}>+</button>
+                        </Grid.Column>
+
+                        <Grid.Column width={1}>
+
+                            <Button circular size="massive" icon="add" className="submit-button" type="submit" onClick={this.handleSubmit}></Button>
+
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+
+                
                 
 
             </div>
