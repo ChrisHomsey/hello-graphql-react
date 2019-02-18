@@ -4,12 +4,14 @@
   "description": "A test of mongoDB & graphQL with reactJS",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-graphql": "^0.6.12",
     "graphql": "^14.0.2",
-    "mongoose": "^5.3.0"
+    "mongoose": "^5.3.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
