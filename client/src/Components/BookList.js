@@ -29,7 +29,7 @@ class BookList extends Component {
                 <ul id="book-list">
                     {this.displayBooks()}
                 </ul>
-                <BookDetails bookId={this.state.selected} changeBook={(newBook) => {this.setState({ selected: newBook })}} />
+                <BookDetails bookId={this.state.selected} callBookChange={(newBook) => {this.setState({ selected: newBook })}} />
             </div>
         )
     }
