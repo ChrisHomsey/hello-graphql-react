@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { getBooksQuery } from '../queries/queries';
+import { Divider } from 'semantic-ui-react';
 
 // components
 import BookDetails from './BookDetails';
@@ -26,9 +27,12 @@ class BookList extends Component {
     render() {
         return(
             <div>
-                <ul id="book-list">
-                    {this.displayBooks()}
-                </ul>
+                <div id="list-container">
+                    <Divider horizontal><h1>Your Reading List</h1></Divider>
+                    <ul id="book-list">
+                        {this.displayBooks()}
+                    </ul>
+                </div>
                 <BookDetails bookId={this.state.selected} callBookChange={(newBook) => {this.setState({ selected: newBook })}} />
             </div>
         )

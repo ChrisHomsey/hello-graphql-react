@@ -8,35 +8,75 @@ body {
   text-align: center;
 }
 
+
 #main{
-  padding: 0px;
+  padding-top: 2rem;
   box-sizing: border-box;
-  width: 70%;
-  height: 100%;
+  width: 100%;
 }
 
-#book-list{
-  padding: 0;
+#list-container{
+  padding: 2rem;
+  width: 100%;
+}
+
+#book-list {
+  margin: 1.5rem 0;
+  padding-left: 0;
 }
 
 #book-list li{
+  font-size: 1rem;
   display: inline-block;
-  margin: 12px;
-  padding: 10px;
-  border-radius: 4px;
+  margin: 0.5em 0.5em 0.5em 0;
+  padding: 0.6em;
+  border-radius: 0.3em;
   border: 1px solid #880E4F;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
   cursor: pointer;
   color: #880E4F;
 }
 
-#add-book{
+#book-list li:hover {
+  background: rgba(255,255,255,0.2);
+  font-size: 1.03rem;
+  margin: 0.47em 0.47em 0.47em 0;
+}
+
+
+#book-details{
+  width: 100%;
+  background: #AD1457;
+  padding: 30px;
+  overflow: auto;
+  box-shadow: -2px -3px 5px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+  color: #fff;
+}
+
+#other-books-list{
+  padding: 0;
+}
+
+#other-books-list li{
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.333em;
+  padding: 0.333em;
+  border-radius: 4px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  color: #fff;
+}
+
+#other-books-list li:hover{
+  background: rgba(255,255,255,0.2);
+}
+
+#add-book {
   background: #fff;
-  padding: 20px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 500px;
+  padding: 2rem 1.2rem;
+  width: 100%;
 }
 
 #add-book h3{
@@ -64,42 +104,36 @@ body {
   color: #fff;
   background: #AD1457;
   cursor: pointer;
-  margin-left: 40px;
-  margin-top: 40px;
+  margin-left: 2.2rem;
+  margin-top: 4rem;
 }
 
 #add-book button:hover{
   background: #AE3477;
 }
 
-#book-details{
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 30%;
-  height: 100%;
-  background: #AD1457;
-  padding: 30px;
-  overflow: auto;
-  box-shadow: -2px -3px 5px rgba(0,0,0,0.3);
-  box-sizing: border-box;
-  color: #fff;
+@media (min-width: 768px) {
+  #main{
+    padding: 0px;
+  }
+  #list-container {
+    width: 70%;
+    height: 100%;
+  }
+  #add-book{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 500px;
+  }
+  #book-details {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+  }
 }
 
-#other-books-list{
-  padding: 0;
-}
 
-#other-books-list li{
-  display: inline-block;
-  margin: 6px;
-  padding: 6px;
-  border-radius: 4px;
-  border: 1px solid #fff;
-  cursor: pointer;
-  color: #fff;
-}
 
-#other-books-list li:hover{
-  background: rgba(255,255,255,0.2);
-}

@@ -95,25 +95,25 @@ class AddBook extends Component {
                         <Grid.Column width={10}>
 
                             <h3>Add New Book:</h3>
+                            <Form>    
+                                <Form.Field inline>
+                                    <label>Title: </label>
+                                    <Input name="name" onChange={this.handleInputChange} type="text"/>
+                                </Form.Field>
 
-                            <Form.Field inline>
-                                <label>Book name: </label>
-                                <Input name="name" onChange={this.handleInputChange} type="text"/>
-                            </Form.Field>
+                                <Form.Field inline>
+                                    <label>Genre: </label>
+                                    <Input name="genre" onChange={this.handleInputChange} type="text"/>
+                                </Form.Field>
 
-                            <Form.Field inline>
-                                <label>Genre: </label>
-                                <Input name="genre" onChange={this.handleInputChange} type="text"/>
-                            </Form.Field>
-
-                            <Form.Field>
-                            <label>Author: </label>
-                            <Input name="authorName" onChange={this.handleInputChange} list="authors"/>
-                                <datalist id="authors">
-                                    {this.displayAuthors()}
-                                </datalist>
-                            </Form.Field>
-
+                                <Form.Field>
+                                <label>Author: </label>
+                                <Input name="authorName" onChange={this.handleInputChange} list="authors"/>
+                                    <datalist id="authors">
+                                        {this.displayAuthors()}
+                                    </datalist>
+                                </Form.Field>
+                            </Form>
                         </Grid.Column>
 
                         <Grid.Column width={1}>
