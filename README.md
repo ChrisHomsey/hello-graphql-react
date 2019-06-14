@@ -87,3 +87,8 @@ You can then run the command `cd client && npm run start` to run the React clien
 
 Open your browser of choice and enter `http://localhost:3000` into the address bar.
 
+## Author
+**Chris Homsey**
+
+* Feel free to check out my [portfolio](https://www.chrishomsey.com) if you'd like!
+* Check out my latest [projects](https://www.chrishomsey.com/portfolio/development) while you're at it!
